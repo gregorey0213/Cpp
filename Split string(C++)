@@ -1,17 +1,22 @@
 //split for string //Только для строки. Раздробление текста, разделителем которого является определённый символ
 #include <bits/stdc++.h>
+#include <vector>
 using namespace std;
 
 void splitstr(string str, string deli = " ")
 {
+    vector<string>words;        //vector
     int start = 0;
     int end = str.find(deli);
     while (end != -1) {
-        cout << str.substr(start, end - start) <<" ";
+        words.push_back(str.substr(start, end - start));
         start = end + deli.size();
         end = str.find(deli, start);
     }
-    cout << str.substr(start, end - start);
+
+    int size=words.size();
+    for(int i=0;i<size;i++) cout<<words[i]<<" ";        //output
+    cout << str.substr(start, end - start); //last word
 }
 int main()
 {
